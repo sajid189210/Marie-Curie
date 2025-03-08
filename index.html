@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marie Curie | Pioneering Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles for our color palette */
+      :root {
+        --primary: #6420aa;
+        --accent: #ff3ea5;
+        --background: #ff7ed4;
+        --secondary-bg: #ffb5da;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+      }
+
+      .bg-primary {
+        background-color: var(--primary);
+      }
+      .bg-accent {
+        background-color: var(--accent);
+      }
+      .bg-custom {
+        background-color: var(--background);
+      }
+      .bg-secondary {
+        background-color: var(--secondary-bg);
+      }
+
+      .text-primary {
+        color: var(--primary);
+      }
+      .text-accent {
+        color: var(--accent);
+      }
+
+      .border-accent {
+        border-color: var(--accent);
+      }
+      .border-primary {
+        border-color: var(--primary);
+      }
+      .border-secondary {
+        border-color: var(--secondary-bg);
+      }
+
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.03);
+      }
+
+      .timeline-container {
+        position: relative;
+      }
+
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: var(--primary);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+      }
+
+      .left {
+        left: 0;
+      }
+
+      .right {
+        left: 50%;
+      }
+
+      .left::after {
+        right: -10px;
+      }
+
+      .right::after {
+        left: -10px;
+      }
+
+      .glow-effect {
+        box-shadow: 0 0 15px rgba(255, 62, 165, 0.5);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .glow-effect:hover {
+        box-shadow: 0 0 25px rgba(255, 62, 165, 0.8);
+      }
+
+      @media screen and (max-width: 768px) {
+        .timeline-container::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item::after {
+          left: 21px;
+        }
+
+        .left::after,
+        .right::after {
+          left: 21px;
+        }
+
+        .right {
+          left: 0;
+        }
+      }
+
+      /* Animation classes */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .slide-in-left {
+        animation: slideInLeft 1s ease-out;
+      }
+
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .slide-in-right {
+        animation: slideInRight 1s ease-out;
+      }
+
+      @keyframes slideInRight {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-primary text-white shadow-lg sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl"
+          >
+            MC
+          </div>
+          <span class="text-xl font-bold">Marie Curie</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#about"
+            class="hover:text-accent transition-colors duration-300"
+            >About</a
+          >
+          <a
+            href="#achievements"
+            class="hover:text-accent transition-colors duration-300"
+            >Achievements</a
+          >
+          <a
+            href="#timeline"
+            class="hover:text-accent transition-colors duration-300"
+            >Timeline</a
+          >
+          <a
+            href="#gallery"
+            class="hover:text-accent transition-colors duration-300"
+            >Gallery</a
+          >
+        </div>
+        <button class="md:hidden text-white focus:outline-none">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+      class="relative bg-gradient-to-r from-primary to-accent text-[#6420AA]"
+    >
+      <div
+        class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center"
+      >
+        <!-- Text Content -->
+        <div class="md:w-1/2 mb-8 md:mb-0 animate-fade-in">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Marie Curie</h1>
+          <h2 class="text-2xl md:text-3xl mb-6">
+            Pioneering Physicist & Chemist
+          </h2>
+          <p class="text-lg mb-8">
+            Discoverer of radium and polonium, first woman to win a Nobel Prize,
+            and the only person to win Nobel Prizes in two different scientific
+            fields.
+          </p>
+          <a
+            href="#about"
+            class="bg-white text-primary font-bold py-3 px-8 rounded-full inline-block hover:bg-secondary-bg transition-colors duration-300 glow-effect"
+          >
+            Discover Her Story
+          </a>
+        </div>
+        <!-- Background Image Container -->
+        <div
+          class="md:w-1/2 animate-fade-in bg-cover bg-center bg-no-repeat h-[500px]"
+          style="
+            background-image: url('/images/marie-curie-portrait-laboratory_996201-91469.avif');
+          "
+        >
+          <!-- Optional Overlay for Better Visibility -->
+          <!-- <div class="absolute inset-0 bg-black bg-opacity-10"></div> -->
+        </div>
+      </div>
+      <!-- Wave SVG at the Bottom -->
+      <div
+        class="absolute bottom-0 left-0 w-full overflow-hidden"
+        style="height: 70px"
+      >
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%"
+        >
+          <path
+            d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: #f9fafb"
+          ></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 slide-in-left">
+            <h2 class="text-3xl font-bold text-primary mb-6">About Marie</h2>
+            <p class="text-gray-700 mb-4">
+              Marie Skłodowska Curie (1867-1934) was a Polish and
+              naturalized-French physicist and chemist who conducted pioneering
+              research on radioactivity.
+            </p>
+            <p class="text-gray-700 mb-4">
+              She was the first woman to win a Nobel Prize, the first and only
+              woman to win the Nobel Prize twice, and the only person to win the
+              Nobel Prize in two scientific fields. She was also the first woman
+              to become a professor at the University of Paris.
+            </p>
+            <p class="text-gray-700 mb-8">
+              Her achievements included the development of the theory of
+              radioactivity (a term she coined), techniques for isolating
+              radioactive isotopes, and the discovery of two elements, polonium
+              and radium.
+            </p>
+            <div class="flex space-x-4">
+              <div class="bg-secondary rounded-lg p-4 flex-1 hover-scale">
+                <h3 class="text-primary font-bold text-xl mb-2">Education</h3>
+                <p class="text-gray-700">University of Paris (Sorbonne)</p>
+              </div>
+              <div class="bg-secondary rounded-lg p-4 flex-1 hover-scale">
+                <h3 class="text-primary font-bold text-xl mb-2">Nationality</h3>
+                <p class="text-gray-700">Polish, French</p>
+              </div>
+              <div class="bg-secondary rounded-lg p-4 flex-1 hover-scale">
+                <h3 class="text-primary font-bold text-xl mb-2">Field</h3>
+                <p class="text-gray-700">Physics, Chemistry</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2 slide-in-right">
+            <div class="bg-custom rounded-lg p-8 shadow-lg">
+              <h3 class="text-white text-2xl font-bold mb-4">Notable Quotes</h3>
+              <div class="mb-6">
+                <blockquote
+                  class="text-white italic border-l-4 border-accent pl-4 py-2 mb-2"
+                >
+                  "Nothing in life is to be feared, it is only to be understood.
+                  Now is the time to understand more, so that we may fear less."
+                </blockquote>
+                <p class="text-white text-sm text-right">- Marie Curie</p>
+              </div>
+              <div class="mb-6">
+                <blockquote
+                  class="text-white italic border-l-4 border-accent pl-4 py-2 mb-2"
+                >
+                  "One never notices what has been done; one can only see what
+                  remains to be done."
+                </blockquote>
+                <p class="text-white text-sm text-right">- Marie Curie</p>
+              </div>
+              <div>
+                <blockquote
+                  class="text-white italic border-l-4 border-accent pl-4 py-2 mb-2"
+                >
+                  "I was taught that the way of progress was neither swift nor
+                  easy."
+                </blockquote>
+                <p class="text-white text-sm text-right">- Marie Curie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-16 md:py-24 bg-secondary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-primary text-center mb-12">
+          Remarkable Achievements
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Achievement 1 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">
+              Discovery of Elements
+            </h3>
+            <p class="text-gray-700">
+              Discovered two new elements: polonium (named after her native
+              Poland) and radium. Both discoveries were made in 1898 while
+              working with her husband Pierre.
+            </p>
+          </div>
+
+          <!-- Achievement 2 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">
+              Theory of Radioactivity
+            </h3>
+            <p class="text-gray-700">
+              Developed the theory of radioactivity (a term she coined) and
+              techniques for isolating radioactive isotopes. She was the first
+              to study the effects of radiation on human cells.
+            </p>
+          </div>
+
+          <!-- Achievement 3 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">Nobel Prizes</h3>
+            <p class="text-gray-700">
+              Won Nobel Prize in Physics (1903) and Nobel Prize in Chemistry
+              (1911), becoming the first person to win Nobel Prizes in multiple
+              scientific fields.
+            </p>
+          </div>
+
+          <!-- Achievement 4 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">
+              Pioneer for Women
+            </h3>
+            <p class="text-gray-700">
+              Became the first female professor at the University of Paris
+              (Sorbonne) and paved the way for women in science, breaking gender
+              barriers in a male-dominated field.
+            </p>
+          </div>
+
+          <!-- Achievement 5 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">
+              Radiology Pioneer
+            </h3>
+            <p class="text-gray-700">
+              During World War I, she developed mobile X-ray units to assist
+              battlefield surgeons. Her work saved countless lives and
+              established the field of radiology.
+            </p>
+          </div>
+
+          <!-- Achievement 6 -->
+          <div class="bg-white rounded-lg shadow-lg p-6 hover-scale">
+            <div class="text-accent text-5xl mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+            </div>
+            <h3 class="text-primary text-xl font-bold mb-3">
+              Research Institutions
+            </h3>
+            <p class="text-gray-700">
+              Founded the Curie Institutes in Paris and Warsaw, which remain
+              important centers for medical research today. Her legacy continues
+              through these institutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-primary text-center mb-12">
+          Life Timeline
+        </h2>
+        <div class="timeline-container">
+          <!-- 1867 -->
+          <div class="timeline-item left">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1867</h3>
+              <p class="text-gray-700">
+                Born as Maria Skłodowska in Warsaw, Poland (then part of the
+                Russian Empire).
+              </p>
+            </div>
+          </div>
+
+          <!-- 1891 -->
+          <div class="timeline-item right">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1891</h3>
+              <p class="text-gray-700">
+                Moved to Paris to study physics and mathematics at the
+                University of Paris (Sorbonne).
+              </p>
+            </div>
+          </div>
+
+          <!-- 1893 -->
+          <div class="timeline-item left">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1893</h3>
+              <p class="text-gray-700">
+                Earned her master's degree in physics, ranking first in her
+                class.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1894 -->
+          <div class="timeline-item right">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1894</h3>
+              <p class="text-gray-700">
+                Met Pierre Curie, a professor in the School of Physics, and
+                married him the following year.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1898 -->
+          <div class="timeline-item left">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1898</h3>
+              <p class="text-gray-700">
+                Discovered the elements polonium and radium with her husband
+                Pierre Curie.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1903 -->
+          <div class="timeline-item right">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1903</h3>
+              <p class="text-gray-700">
+                Awarded the Nobel Prize in Physics alongside Pierre Curie and
+                Henri Becquerel.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1906 -->
+          <div class="timeline-item left">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1906</h3>
+              <p class="text-gray-700">
+                Pierre died in a street accident. Marie took over his teaching
+                position, becoming the first female professor at the Sorbonne.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1911 -->
+          <div class="timeline-item right">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1911</h3>
+              <p class="text-gray-700">
+                Awarded the Nobel Prize in Chemistry for her discovery and study
+                of radium and polonium.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1914 -->
+          <div class="timeline-item left">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1914-1918</h3>
+              <p class="text-gray-700">
+                During World War I, developed mobile X-ray units to help treat
+                wounded soldiers on the battlefield.
+              </p>
+            </div>
+          </div>
+
+          <!-- 1934 -->
+          <div class="timeline-item right">
+            <div class="bg-white p-6 rounded-lg shadow-lg hover-scale">
+              <h3 class="text-primary text-xl font-bold mb-2">1934</h3>
+              <p class="text-gray-700">
+                Died at the age of 66 from aplastic anemia, believed to be
+                caused by her long-term exposure to radiation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 md:py-24 bg-custom">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white text-center mb-12">
+          Photo Gallery
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Image 1 -->
+          <div class="hover-scale">
+            <div class="bg-white p-3 rounded-lg shadow-lg">
+              <img
+                src="/images/download (1).jpeg"
+                alt="Marie Curie in her laboratory"
+                class="w-full h-auto rounded"
+              />
+              <p class="text-primary text-center mt-3 font-medium">
+                Marie Curie in her laboratory, 1920s
+              </p>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="hover-scale">
+            <div class="bg-white p-3 rounded-lg shadow-lg">
+              <img
+                src="/images/OIP.jpeg"
+                alt="Marie and Pierre Curie"
+                class="w-full h-auto rounded"
+              />
+              <p class="text-primary text-center mt-3 font-medium">
+                Marie and Pierre Curie, 1895
+              </p>
+            </div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="hover-scale">
+            <div class="bg-white p-3 rounded-lg shadow-lg">
+              <img
+                src="/images/OIP (1).jpeg"
+                alt="Marie Curie with Einstein"
+                class="w-full h-auto rounded"
+              />
+              <p class="text-primary text-center mt-3 font-medium">
+                Marie Curie with Albert Einstein, 1925
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
